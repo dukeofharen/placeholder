@@ -122,6 +122,7 @@ build-windows-installer:
     - windows
     - windows-1809
   script:
+    - scripts/build/install-nsis.ps1
     - scripts/build/build-installer.ps1
   artifacts:
     paths:
