@@ -67,8 +67,6 @@ section "install"
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "NoModify" 1
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "NoRepair" 1
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${COMPANYNAME} ${APPNAME}" "EstimatedSize" $0
-
-    ExecWait 'powershell.exe -NoProfile -ExecutionPolicy Unrestricted -Command "& \"$INSTDIR\Add-Path-Var.ps1\"" -installFolder \"$INSTDIR\"'
 sectionEnd
 
 function un.onInit
@@ -82,8 +80,6 @@ function un.onInit
 functionEnd
 
 section "uninstall"
-	ExecWait 'powershell.exe -NoProfile -ExecutionPolicy Unrestricted -Command "& \"$INSTDIR\Remove-Path-Var.ps1\"" -installFolder \"$INSTDIR\"'
-
 	rmDir /r "$SMPROGRAMS\${COMPANYNAME}"
 
 	rmDir /r $INSTDIR
