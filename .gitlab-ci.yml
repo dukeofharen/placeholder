@@ -115,6 +115,15 @@ build-windows:
 #      - dist
 #    expire_in: 1 week
 
+build-windows-installer:
+  stage: build-installer
+  script:
+    - scripts/build-installer.ps1
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 week  
+
 docker-build:
   image: $DOCKER_IMAGE
   stage: publish
